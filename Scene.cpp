@@ -67,31 +67,41 @@ void Scene::keyPressEvent(QKeyEvent *event)
 
     if (event->key() == Qt::Key_Left && pos.x() > 0) {
         QPointF nextPos = pos + QPointF(-10, 0);
+        player->setPixmap(QPixmap(":/images/player1_left.png").scaled(40, 40));
+        currentDirection = Qt::Key_Left;
         if (!collisionWithObstacle(nextPos,pos)) {
             player->setPos(nextPos);
-            player->setPixmap(QPixmap(":/images/player1_left.png").scaled(45, 45));
-            currentDirection = Qt::Key_Left;
+            //player->setPixmap(QPixmap(":/images/player1_left.png").scaled(40, 40));
+            //currentDirection = Qt::Key_Left;
         }
     } else if (event->key() == Qt::Key_Right && pos.x() < 600) {
         QPointF nextPos =pos + QPointF(10, 0);
+
+        player->setPixmap(QPixmap(":/images/player1_right.png").scaled(40,40));
+        currentDirection = Qt::Key_Right;
         if (!collisionWithObstacle(nextPos,pos)) {
             player->setPos(nextPos);
-            player->setPixmap(QPixmap(":/images/player1_right.png").scaled(45,45));
-            currentDirection = Qt::Key_Right;
+            //player->setPixmap(QPixmap(":/images/player1_right.png").scaled(40,40));
+            //currentDirection = Qt::Key_Right;
         }
     } else if (event->key() == Qt::Key_Up && pos.y() > 0) {
         QPointF nextPos = pos + QPointF(0, -10);
+        player->setPixmap(QPixmap(":/images/player1_up.png").scaled(40, 40));
+        currentDirection = Qt::Key_Up;
         if (!collisionWithObstacle(nextPos,pos)) {
             player->setPos(nextPos);
-            player->setPixmap(QPixmap(":/images/player1_up.png").scaled(45, 45));
-            currentDirection = Qt::Key_Up;
+            //player->setPixmap(QPixmap(":/images/player1_up.png").scaled(40, 40));
+            //currentDirection = Qt::Key_Up;
         }
     } else if (event->key() == Qt::Key_Down) {
+
         QPointF nextPos = pos + QPointF(0, 10);
+        player->setPixmap(QPixmap(":/images/player1_down.png").scaled(40, 40));
+        currentDirection = Qt::Key_Down;
         if (!collisionWithObstacle(nextPos,pos)) {
             player->setPos(nextPos);
-            player->setPixmap(QPixmap(":/images/player1_down.png").scaled(45, 45));
-            currentDirection = Qt::Key_Down;
+            //player->setPixmap(QPixmap(":/images/player1_down.png").scaled(40, 40));
+            //currentDirection = Qt::Key_Down;
         }
     } else if (event->key() == Qt::Key_Space) {
         Bullet *bullet = new Bullet(currentDirection);
