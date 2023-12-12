@@ -8,7 +8,7 @@
 Bullet::Bullet(Qt::Key keyDirection)
 {
     direction = keyDirection;
-    setPixmap(QPixmap(":/images/bullet_up.png"));
+    //setPixmap(QPixmap(":/images/bullet_up.png"));
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Bullet::move);
