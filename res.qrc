@@ -10,6 +10,11 @@
         <file>player1_left.png</file>
         <file>player1_right.png</file>
         <file>player1_up.png</file>
+        <file>Armor_Tank.png</file>
+        <file>Basic_Tank.png</file>
+        <file>Fast_Tank.png</file>
+        <file>Power_Tank.png</file>
+        <file>brick_background.jpg</file>
     </qresource>
     <qresource prefix="/word">
         <file>obstacle.txt</file>
