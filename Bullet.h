@@ -6,12 +6,26 @@
 #include <QTimer>
 #include <QGraphicsRectItem>
 #include <QKeyEvent>
+#include <QGraphicsScene>
+#include <QList>
+#include <QRect>
+#include "Player.h"
+#include "Obstruction.h"
+#include "Enemy.h"
+#include "Enemyhealth.h"
 
 class Bullet : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
+
+public:
+    void handleCollision(QGraphicsItem* item);
+
 public slots:
     virtual void move()=0;
+
+signals:
+    void bulletHitEnemy(Bullet *bullet, Enemy *enemy);
 
 protected:
     QTimer *timer;

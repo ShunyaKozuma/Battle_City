@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QPushButton>
+#include <QGraphicsRectItem>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -8,20 +9,31 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene->setSceneRect(-12.5, -25, 800, 750);
-    scene->setBackgroundBrush(QBrush(Qt::black));
-
     ui->graphicsView->setScene(scene);
+    ui->graphicsView->setFixedSize(800, 700);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     //連接各種狀態
     connect(scene, &Scene::restartGame, this, &Widget::restartStatement);
     connect(scene, &Scene::pauseGame, this, &Widget::pauseStatement);
     connect(scene, &Scene::continueGame, this, &Widget::continueStatement);
-    //scene->startGame();
-    //ui->graphicsView->setFixedSize(800,800);
 
     //background
+
+    scene->setSceneRect(0, 0, 800, 700);
+    scene->setBackgroundBrush(QBrush(Qt::black));
+
+    QGraphicsRectItem *grayBackground = new QGraphicsRectItem(650, 0, 150, 700);
+    grayBackground->setBrush(QBrush(Qt::gray));
+    scene->addItem(grayBackground);
+
+    // scaling
+    scene->addLine(0, 0, 650, 0, QPen(Qt::blue));
+    scene->addLine(0, 0, 0, 700, QPen(Qt::red));
+    scene->addLine(650, 0, 650, 700, QPen(Qt::blue));
+    scene->addLine(650, 700, 0, 700, QPen(Qt::blue));
+
+
     imageLabel=new QLabel(this);
     QPixmap image(":/images/brick_background.jpg"); // 请替换为实际图片路径
     imageLabel->setPixmap(image);

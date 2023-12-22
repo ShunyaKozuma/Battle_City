@@ -8,7 +8,7 @@
 #include <QGraphicsPixmapItem>
 
 //the step of enemy tank
-#define STEP 2
+#define STEP 10
 
 class Enemy :public QObject ,public QGraphicsPixmapItem
 {
@@ -18,7 +18,7 @@ class Enemy :public QObject ,public QGraphicsPixmapItem
 public:
     qreal rotation() const;
     void setRotation(qreal newRotation);
-    void shootbullet(int i);
+    void turn();
 
 
 public slots:
@@ -30,7 +30,9 @@ signals:
     void enemyHitsTheGrounds(Enemy *enemy);
 
 protected:
+    void shootbullet(int i);
     QTimer *timer;
+    int countStep;
     int dir;
     const QList<QPointF> directionList = {QPointF(-STEP, 0), QPointF(0, STEP), QPointF(STEP, 0), QPointF(0, -STEP)};
 private:

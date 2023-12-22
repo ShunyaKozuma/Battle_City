@@ -15,6 +15,14 @@
         <file>Fast_Tank.png</file>
         <file>Power_Tank.png</file>
         <file>brick_background.jpg</file>
+        <file>Enemy_heart.png</file>
+        <file>Eagle.png</file>
+        <file>Shovel_Item.png</file>
+        <file>SpecialTimer_Item.png</file>
+        <file>Star_Item.png</file>
+        <file>Tank_Item.png</file>
+        <file>Grenade_Item.png</file>
+        <file>Helmet_Item.png</file>
     </qresource>
     <qresource prefix="/word">
         <file>obstacle.txt</file>

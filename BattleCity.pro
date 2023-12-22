@@ -9,30 +9,28 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Brick.cpp \
     Bullet.cpp \
+    Eagle.cpp \
     Enemy.cpp \
-    Ice.cpp \
+    Enemyhealth.cpp \
+    Item.cpp \
     Obstruction.cpp \
     Player.cpp \
     Scene.cpp \
-    Steel.cpp \
-    Trees.cpp \
-    Water.cpp \
+    Score.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
-    Brick.h \
     Bullet.h \
+    Eagle.h \
     Enemy.h \
-    Ice.h \
+    Enemyhealth.h \
+    Item.h \
     Obstruction.h \
     Player.h \
     Scene.h \
-    Steel.h \
-    Trees.h \
-    Water.h \
+    Score.h \
     widget.h
 
 FORMS += \

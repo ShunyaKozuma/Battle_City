@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "Brick.h"
+#include "Obstruction.h".h"
 #include "Bullet.h"
 #include <QDebug>
 #include <QTimer>

@@ -5,12 +5,12 @@
 #include <QTimer>
 #include <QList>
 #include "Obstruction.h"
-#include "Brick.h"
-#include "Steel.h"
 #include "Bullet.h"
 #include "Player.h"
 #include "Enemy.h"
-#include <QGraphicsScene>
+#include "Enemyhealth.h"
+#include "Eagle.h"
+#include "Score.h"
 
 #define WIDTH 26
 #define HEIGHT 28
@@ -29,9 +29,15 @@ public:
 
 public slots:
     bool collisionWithObstacle(const QPointF &nextPos, const QPointF &pos);
+    void randomGenerateEnemyStart();
+    void decreaseEnemyHealth();
 
 private:
+    int random_factor;
+    Score *score;
     Player *player;
+    QList<EnemyHealth*> enemyHealthList;
+    Eagle *eagle;
     Brick *brick;
     Basic *basic;
     Fast *fast;

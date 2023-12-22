@@ -10,6 +10,7 @@
 #include <QResource>
 #include <QDebug>
 
+
 Scene::Scene(QObject *parent)
     : QGraphicsScene{parent}
 {
@@ -76,9 +77,32 @@ void Scene::startGame(){
     player->setPos(250, 250);
     addItem(player);
 
+/*
     basic = new Basic();
     basic->setPos(250,0);
     addItem(basic);
+*/
+    score = new Score();
+    addItem(score);
+
+    eagle = new Eagle();
+    eagle->setPos(300,650);
+    addItem(eagle);
+
+
+    for(int i=0; i<8; i++){
+        EnemyHealth* enemyHealth = new EnemyHealth();
+        //enemyHealth->setPos(680*i,200*i);
+        enemyHealth->setPos(680 + i%2 * 40 ,150 + i/2 * 40);
+        enemyHealthList.append(enemyHealth);
+        addItem(enemyHealth);
+    }
+
+    random_factor=rand()%10000+5000;
+    timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, &Scene::randomGenerateEnemyStart );
+    timer->start(random_factor);
+
     /*
     fast = new Fast();
     fast->setPos(350,0);
@@ -103,6 +127,11 @@ Scene::~Scene()
     delete fast;
     delete power;
     delete armor;
+    */
+    /*
+    for (EnemyHealth* health : enemyHealthList) {
+        delete health;
+    }
     */
 }
 
@@ -163,7 +192,7 @@ void Scene::keyPressEvent(QKeyEvent *event)
         if (!collisionWithObstacle(nextPos,pos)) {
             player->setPos(nextPos);
         }
-    } else if (event->key() == Qt::Key_Down && CurrentStatus==2) {
+    } else if (event->key() == Qt::Key_Down && pos.y() < 650 && CurrentStatus==2) {
 
         QPointF nextPos = pos + QPointF(0, 10);
         player->setPixmap(QPixmap(":/images/player1_down.png").scaled(40, 40));
@@ -173,11 +202,12 @@ void Scene::keyPressEvent(QKeyEvent *event)
         }
     } else if (event->key() == Qt::Key_Space && CurrentStatus==2) {
         Player_Bullet *bullet = new Player_Bullet(currentDirection);
+        connect(bullet, &Bullet::bulletHitEnemy, this, &Scene::decreaseEnemyHealth);
         bullet->setPos(player->pos() + QPointF(20, 20));
         addItem(bullet);
     }
     if (event->key() == Qt::Key_E && CurrentStatus==3){
-        CurrentStatus==4;
+        CurrentStatus = 4;
         //邏輯: 再暫停狀態中直接連接gameover(待寫，gameover畫面包含遊戲統計分數)->暫停狀態按r再繞回初始介面並更改CurrentStatus=1
     }
 }
@@ -187,6 +217,8 @@ bool Scene::collisionWithObstacle(const QPointF &nextPos, const QPointF &pos)
     player->setPos(nextPos);
     QList<QGraphicsItem *> collidingItems = player->collidingItems();
     player->setPos(pos);
+
+    // Here for changin hit state of each obstruction
     for (QGraphicsItem *item : collidingItems) {
         if (typeid(*item) == typeid(Brick) || typeid(*item) == typeid(Steel) ) {
             return true;
@@ -194,3 +226,24 @@ bool Scene::collisionWithObstacle(const QPointF &nextPos, const QPointF &pos)
     }
     return false;
 }
+
+//create collisionWithPowerUps later
+
+void Scene::randomGenerateEnemyStart()
+{
+    basic = new Basic();
+    basic->setPos(rand()%600,0);
+    addItem(basic);
+    random_factor=rand()%10000+5000;
+}
+
+//decrease enemy health and increase score
+void Scene::decreaseEnemyHealth()
+{
+    if (!enemyHealthList.isEmpty()) {
+        delete enemyHealthList.takeLast();
+        score->increase();
+    }
+    //when health = 0, go to result scene
+}
+
