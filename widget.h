@@ -3,6 +3,9 @@
 
 #include "Scene.h"
 #include <QWidget>
+#include<QPushButton>
+#include<QLabel>
+QT_BEGIN_NAMESPACE
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -15,9 +18,25 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+    void StartbdSetting();
 
 private:
     Ui::Widget *ui;
     Scene *scene;
+
+    //用來處理封面的標題啥的
+    QLabel *imageLabel;
+    QLabel *title;
+    QLabel *PauseNote;
+    QPushButton *but1;
+    QPushButton *but2;
+    //signals:
+    //    void on_startButton_clicked();
+public slots:
+    void startButton_clicked();
+    void restartStatement();
+    void pauseStatement();
+    void continueStatement();
+
 };
 #endif // WIDGET_H
