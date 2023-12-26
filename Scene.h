@@ -57,6 +57,7 @@ private:
     Fast *fast;
     Power *power;
     Armor *armor;
+    Flashing *flashing;
     QTimer *timer;
     Qt::Key currentDirection;
     Qt::Key currentDirection2;

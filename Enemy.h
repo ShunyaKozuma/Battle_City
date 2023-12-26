@@ -79,5 +79,17 @@ public slots:
     void move();
 };
 
+class Flashing :public Enemy
+{
+    Q_OBJECT
+public:
+    Flashing();
+public slots:
+    void move();
+    void flash();
+private:
+    bool isFirstAppearance{true};
+};
+
 #endif // ENEMY_H
 

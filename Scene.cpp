@@ -323,15 +323,22 @@ bool Scene::collisionWithObstacle(const QPointF &nextPos, const QPointF &pos,int
 
 void Scene::randomGenerateEnemyStart()
 {
-    if(tanknum<8){
-    basic = new Basic();
-    basic->setPos(rand()%600,0);
-    addItem(basic);
-    random_factor=rand()%10000+5000;
-    tanknum=tanknum+1;
-    connect(basic,Enemy::TellSceneLosePlayer,this,Scene::LosePLayerToScene);
+    if (tanknum < 20) {
+        if (tanknum == 3 || tanknum == 10 || tanknum == 17) {
+            Flashing* flashing = new Flashing();  // Allocate on the heap
+            flashing->setPos(rand() % 600, 0);
+            addItem(flashing);
+        } else {
+            Basic* basic = new Basic();  // Allocate on the heap
+            basic->setPos(rand() % 600, 0);
+            addItem(basic);
+            connect(basic, Enemy::TellSceneLosePlayer, this, &Scene::LosePLayerToScene);
+        }
+        random_factor = rand() % 10000 + 5000;
+        tanknum = tanknum + 1;
     }
 }
+
 
 //decrease enemy health and increase score
 void Scene::decreaseEnemyHealth()

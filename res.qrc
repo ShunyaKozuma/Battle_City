@@ -30,6 +30,7 @@
         <file>ice.png</file>
         <file>water.png</file>
         <file>trees.png</file>
+        <file>Flashing_Tank.png</file>
     </qresource>
     <qresource prefix="/word">
         <file>obstacle.txt</file>

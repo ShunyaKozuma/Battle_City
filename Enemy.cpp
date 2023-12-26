@@ -238,3 +238,52 @@ void Armor::move()
     }
     shootbullet(dir);
 }
+
+Flashing::Flashing()
+{
+    setPixmap(QPixmap(":/images/Fast_Tank.png").scaled(45,45));
+    srand(time(NULL));
+    timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, &Enemy::move);
+    timer->start(100);
+
+    QTimer* flashingTimer = new QTimer(this);
+    connect(flashingTimer, &QTimer::timeout, this, &Flashing::flash);
+    flashingTimer->start(500);
+}
+
+void Flashing::move()
+{
+    int dir = rand() % 4;
+
+    switch (dir) {
+    case 0:
+        setRotation(90);
+        setPos(x() , y() + 5);
+        break;
+    case 1:
+        setRotation(0);
+        setPos(x() , y() - 5);
+        break;
+    case 2:
+        setRotation(180);
+        setPos(x() + 5 , y());
+        break;
+    default:
+        setRotation(270);
+        setPos(x() - 5 , y());
+        break;
+    }
+    shootbullet(dir);
+}
+
+void Flashing::flash()
+{
+    if (isFirstAppearance) {
+        setPixmap(QPixmap(":/images/Fast_Tank.png").scaled(45,45));
+    } else {
+        setPixmap(QPixmap(":/images/Flashing_Tank.png").scaled(45,45));
+    }
+
+    isFirstAppearance = !isFirstAppearance;
+}
