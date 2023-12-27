@@ -1,0 +1,48 @@
+#include "PowerUp.h"
+#include <QTimer>
+
+
+PowerUp::PowerUp(PowerUpType type) : QObject(), QGraphicsPixmapItem()
+{
+    this->type = type;
+    
+    setPixmap(pixmapForType(type));
+    
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [this]() {
+        emit collected(type); // Signal that the power-up has been collected
+        delete this; // Delete the power-up object
+    });
+    timer->start(10000);    
+}
+
+void PowerUp::activate()
+{
+    // Implement the specific effects of each power-up type
+    switch (type) {
+    case Grenade:
+        // Destroy all enemies on the screen
+        // ...
+        break;
+    case Helmet:
+        // Give temporary force field
+        // ...
+        break;
+        // Implement other power-up effects
+    }
+}
+
+QPixmap PowerUp::pixmapForType(PowerUpType type)
+{
+    // Implement logic to return the appropriate pixmap for each power-up type
+    switch (type) {
+    case Grenade:
+        return QPixmap(":/images/Grenade_Item.png".scaled(45,45));
+    case Helmet:
+        return QPixmap(":/images/Helmet_Itw.png".scaled(45,45));
+    // Add cases for other power-up types
+    default:
+        return QPixmap(); // Return an empty pixmap for unknown types
+    }
+}
+

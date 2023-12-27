@@ -16,6 +16,7 @@ SOURCES += \
     Item.cpp \
     Obstruction.cpp \
     Player.cpp \
+    PowerUp.cpp \
     Scene.cpp \
     Score.cpp \
     main.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     Item.h \
     Obstruction.h \
     Player.h \
+    PowerUp.h \
     Scene.h \
     Score.h \
     widget.h
