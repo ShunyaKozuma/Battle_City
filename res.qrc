@@ -31,6 +31,12 @@
         <file>water.png</file>
         <file>trees.png</file>
         <file>Flashing_Tank.png</file>
+        <file>Timer.png</file>
+        <file>Tank.png</file>
+        <file>Star.png</file>
+        <file>Shovel.png</file>
+        <file>Helmet.png</file>
+        <file>Grenade.png</file>
     </qresource>
     <qresource prefix="/word">
         <file>obstacle.txt</file>
