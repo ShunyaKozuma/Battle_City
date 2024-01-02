@@ -124,9 +124,9 @@ Widget::Widget(QWidget *parent)
     PauseNote->hide();
 
     //gameover重新開始介面
-    restartbut=new QPushButton("Play Again",this);
-    restartbut->move(250,400);
-    restartbut->setStyleSheet("Play Again{font:20px;}");
+    restartbut=new QPushButton("Return to Menu",this);
+    restartbut->move(325,400);
+    restartbut->setStyleSheet("Return to Menu{font:20px;}");
     restartbut->resize(100,50);
     connect(restartbut,&QPushButton::clicked,this,&Widget::gameoverButton_clicked);
     restartbut->hide();
@@ -204,10 +204,10 @@ Widget::Widget(QWidget *parent)
     loadOldGamebut->show();
 
     //在暫停時可以儲存遊戲離開的按鍵
-    exitGamebut=new QPushButton("Exit and Save",this);
-    exitGamebut->move(400,400);
-    exitGamebut->setStyleSheet("Exit and Save{font:20px;}");
-    exitGamebut->resize(100,50);
+    exitGamebut=new QPushButton("Close and Save Game",this);
+    exitGamebut->move(305,475);
+    exitGamebut->setStyleSheet("Close and Save Game{font:20px;}");
+    exitGamebut->resize(150,50);
     connect(exitGamebut,&QPushButton::clicked,this,&Widget::exitGame_clicked);
     exitGamebut->hide();
 
