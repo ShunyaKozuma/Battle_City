@@ -647,7 +647,7 @@ void Scene::saveAllRecord()//
     //QResource::registerResource("res.qrc");
     //QString resourcePath = ":/word/obstacle.txt";
     //QString filename2 = ":/word/RecordForOldGame.txt";
-    saveRecordPath = "C:/Users/NUTC/OneDrive/桌面/RecordForOldGame.txt";
+    saveRecordPath = "C:/Users/USER/Downloads/Battle_City-0103_0340/Battle_City-0103_0340/RecordForOldGame.txt";
     QFile file(saveRecordPath);
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -686,7 +686,7 @@ void Scene::saveAllRecord()//
 void Scene::getOldRecord()
 {
 
-    saveRecordPath = "C:/Users/NUTC/OneDrive/桌面/RecordForOldGame.txt";
+    saveRecordPath = "C:/Users/USER/Downloads/Battle_City-0103_0340/Battle_City-0103_0340/RecordForOldGame.txt";
     QFile file(saveRecordPath);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {

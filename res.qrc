@@ -37,6 +37,8 @@
         <file>Shovel.png</file>
         <file>Helmet.png</file>
         <file>Grenade.png</file>
+        <file>Logo.png</file>
+        <file>black.jpg</file>
     </qresource>
     <qresource prefix="/word">
         <file>obstacle.txt</file>

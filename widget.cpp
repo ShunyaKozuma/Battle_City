@@ -40,40 +40,80 @@ Widget::Widget(QWidget *parent)
 
 
     imageLabel=new QLabel(this);
-    QPixmap image(":/images/brick_background.jpg"); // 请替换为实际图片路径
+    QPixmap image(":/images/black.jpg");
     imageLabel->setPixmap(image);
-    imageLabel->setGeometry(0,0,image.width(), image.height());
+    imageLabel->setGeometry(0,0,1000,800);
 
     //選擇開始新遊戲
-    NewGamebut=new QPushButton("start new game",this);
-    NewGamebut->move(200,400);
-    NewGamebut->setStyleSheet("player1{font:40px;color:blue;}");
-    NewGamebut->resize(100,50);
+    NewGamebut=new QPushButton("Start New Game",this);
+    NewGamebut->move(225,350);
+    NewGamebut->setStyleSheet("QPushButton {"
+                              "background-color: none;"
+                              "border: none;"
+                              "color: white;"
+                              "padding: 5px 10px;"
+                              "text-align: center;"
+                              "text-decoration: none;"
+                              "display: inline-block;"
+                              "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                              "font: 40px;"
+                              "margin: 4px 2px;"
+                              "cursor: pointer;"
+                              "}");
+    NewGamebut->resize(350,50);
     connect(NewGamebut,&QPushButton::clicked,this,&Widget::choosePlayerStatement);
     NewGamebut->show();
 
     //player1、2
-    but1=new QPushButton("player1",this);
-    but1->move(200,400);
-    but1->setStyleSheet("player1{font:40px;color:blue;}");
-    but1->resize(100,50);
+    but1=new QPushButton("1 Player",this);
+    but1->move(200,300);
+    but1->setStyleSheet("QPushButton {"
+                        "background-color: none;"
+                        "border: none;"
+                        "color: white;"
+                        "padding: 5px 10px;"
+                        "text-align: center;"
+                        "text-decoration: none;"
+                        "display: inline-block;"
+                        "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                        "font: 40px;"
+                        "margin: 4px 2px;"
+                        "cursor: pointer;"
+                        "}");
+    but1->resize(400,200);
     connect(but1,&QPushButton::clicked,this,&Widget::startButton_clicked);
     //but1->setFlat(1);
     //but1->setStyleSheet("player1{font-size:40pt;color:#123456;border:none;background:transparent;}");
     but1->hide();
 
-    but2=new QPushButton("player2",this);
-    but2->move(500,400);
-    but2->setStyleSheet("player2{font:20px;}");
-    but2->resize(100,50);
+    but2=new QPushButton("2 Player",this);
+    but2->move(200,375);
+    but2->setStyleSheet("QPushButton {"
+                        "background-color: none;"
+                        "border: none;"
+                        "color: white;"
+                        "padding: 5px 10px;"
+                        "text-align: center;"
+                        "text-decoration: none;"
+                        "display: inline-block;"
+                        "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                        "font: 40px;"
+                        "margin: 4px 2px;"
+                        "cursor: pointer;"
+                        "}");
+    but2->resize(400,200);
     connect(but2,&QPushButton::clicked,this,&Widget::TwoPlayerstartButton_clicked);
     but2->hide();
 
-    title=new QLabel("Battle City!", this);
-    QFont font("Press Start 2P", 80, QFont::Bold);
-    title->setStyleSheet("color: white; ");
-    title->setFont(font);
-    title->setGeometry(150, 50, 550, 200);
+
+
+    title = new QLabel(this);
+    QPixmap logoImage(":/images/Logo.png");
+    title->setPixmap(logoImage);
+    //QFont font("Press Start 2P", 80, QFont::Bold);
+    //title->setStyleSheet("color: white; ");
+    //title->setFont(font);
+    title->setGeometry(200, 50, 900, 300);
     title->show();
 
     PauseNote=new QLabel("push key T to continue the game!", this);
@@ -85,9 +125,9 @@ Widget::Widget(QWidget *parent)
 
     //gameover重新開始介面
     restartbut=new QPushButton("Play Again",this);
-    restartbut->move(400,400);
+    restartbut->move(250,400);
     restartbut->setStyleSheet("Play Again{font:20px;}");
-    restartbut->resize(200,100);
+    restartbut->resize(100,50);
     connect(restartbut,&QPushButton::clicked,this,&Widget::gameoverButton_clicked);
     restartbut->hide();
 
@@ -101,19 +141,42 @@ Widget::Widget(QWidget *parent)
 
     //統計分數的頁面
     scorestorebut=new QPushButton("Rank",this);
-    scorestorebut->move(500,250);
-    scorestorebut->setStyleSheet("Rank{font:20px;}");
-    //scorestorebut->resize(200,100);
+    scorestorebut->move(325,425);
+    scorestorebut->setStyleSheet("QPushButton {"
+                                 "background-color: none;"
+                                 "border: none;"
+                                 "color: white;"
+                                 "padding: 5px 10px;"
+                                 "text-align: center;"
+                                 "text-decoration: none;"
+                                 "display: inline-block;"
+                                 "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                                 "font: 40px;"
+                                 "margin: 4px 2px;"
+                                 "cursor: pointer;"
+                                 "}");
+    scorestorebut->resize(150,50);
     connect(scorestorebut,&QPushButton::clicked,this,&Widget::rankButton_clicked);
     scorestorebut->show();
 
     //統計分數的頁面返回介面返回鍵
-    returnfromrank =new QPushButton("return",this);
-    returnfromrank->move(650,600);
-    //returnfromrank->setStyleSheet("Rank{font:20px;}");
-    //returnfromrank->resize(100,100);
+    returnfromrank =new QPushButton("Return",this);
+    returnfromrank->move(500,625);
+    returnfromrank->setStyleSheet("QPushButton {"
+                                  "background-color: none;"
+                                  "border: none;"
+                                  "color: white;"
+                                  "padding: 5px 10px;"
+                                  "text-align: center;"
+                                  "text-decoration: none;"
+                                  "display: inline-block;"
+                                  "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                                  "font: 40px;"
+                                  "margin: 4px 2px;"
+                                  "cursor: pointer;"
+                                  "}");
+    returnfromrank->resize(350,50);
     connect(returnfromrank,&QPushButton::clicked,this,&Widget::returnButton_clicked);
-    returnfromrank->setStyleSheet("");
     returnfromrank->hide();
 
     //分數統計表格
@@ -121,18 +184,30 @@ Widget::Widget(QWidget *parent)
     tableWidget->hide();
 
     //登陸舊遊戲的按鍵
-    loadOldGamebut=new QPushButton("load game",this);
-    loadOldGamebut->move(500,400);
-    loadOldGamebut->setStyleSheet("Continue{font:20px;}");
-    loadOldGamebut->resize(100,50);
+    loadOldGamebut=new QPushButton("Load Game",this);
+    loadOldGamebut->move(225,500);
+    loadOldGamebut->setStyleSheet("QPushButton {"
+                                  "background-color: none;"
+                                  "border: none;"
+                                  "color: white;"
+                                  "padding: 5px 10px;"
+                                  "text-align: center;"
+                                  "text-decoration: none;"
+                                  "display: inline-block;"
+                                  "font-family: 'Press Start 2P', cursive;"  // Use a pixel-style font
+                                  "font: 40px;"
+                                  "margin: 4px 2px;"
+                                  "cursor: pointer;"
+                                  "}");
+    loadOldGamebut->resize(350,75);
     connect(loadOldGamebut,&QPushButton::clicked,this,&Widget::loadOldGame_clicked);
     loadOldGamebut->show();
 
     //在暫停時可以儲存遊戲離開的按鍵
     exitGamebut=new QPushButton("Exit and Save",this);
-    exitGamebut->move(600,250);
+    exitGamebut->move(400,400);
     exitGamebut->setStyleSheet("Exit and Save{font:20px;}");
-    //scorestorebut->resize(200,100);
+    exitGamebut->resize(100,50);
     connect(exitGamebut,&QPushButton::clicked,this,&Widget::exitGame_clicked);
     exitGamebut->hide();
 
@@ -234,6 +309,7 @@ void Widget::choosePlayerStatement()
     scorestorebut->hide();
     but1->show();
     but2->show();
+    returnfromrank->show();
 }
 
 
@@ -280,7 +356,7 @@ void Widget::ranktablesetting()
     tableWidget->setRowCount(rowCount);
     tableWidget->setColumnCount(colCount);
     tableWidget->setParent(this);
-    tableWidget->setGeometry(50, 50, 300, 200);
+    tableWidget->setGeometry(150, 100, 500, 500);
     tableWidget->setHorizontalHeaderLabels({"Score", "Total Playtime(s)"});
     //data
     for (int row = 0; row < rowCount; ++row) {
@@ -290,7 +366,6 @@ void Widget::ranktablesetting()
         tableWidget->setItem(row, 0, scoreItem);
         tableWidget->setItem(row, 1, timeItem);
     }
-    tableWidget->setGeometry(50, 50, 300, 200);
 
     // 显示表格
     tableWidget->show();
@@ -307,6 +382,7 @@ void Widget::startButton_clicked()
     imageLabel->hide();
     title->hide();
     scorestorebut->hide();
+    returnfromrank->hide();
 
     //scene->clear();//移除场景中的所有图形项
     //qDebug()<<"widget cleared";
@@ -330,6 +406,7 @@ void Widget::TwoPlayerstartButton_clicked()
     imageLabel->hide();
     title->hide();
     scorestorebut->hide();
+    returnfromrank->hide();
 
     //scene->clear();//移除场景中的所有图形项
     //qDebug()<<"widget cleared";
@@ -365,7 +442,8 @@ void Widget::rankButton_clicked()
 
 void Widget::returnButton_clicked()
 {
-
+    but1->hide();
+    but2->hide();
     returnfromrank->hide();
     tableWidget->hide();//統計表消失
     StartbdSetting();
