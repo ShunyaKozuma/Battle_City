@@ -1,0 +1,49 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>brick.png</file>
+        <file>steel.png</file>
+        <file>bullet_down.png</file>
+        <file>bullet_left.png</file>
+        <file>bullet_right.png</file>
+        <file>bullet_up.png</file>
+        <file>player1_down.png</file>
+        <file>player1_left.png</file>
+        <file>player1_right.png</file>
+        <file>player1_up.png</file>
+        <file>Armor_Tank.png</file>
+        <file>Basic_Tank.png</file>
+        <file>Fast_Tank.png</file>
+        <file>Power_Tank.png</file>
+        <file>brick_background.jpg</file>
+        <file>Enemy_heart.png</file>
+        <file>Eagle.png</file>
+        <file>Shovel_Item.png</file>
+        <file>SpecialTimer_Item.png</file>
+        <file>Star_Item.png</file>
+        <file>Tank_Item.png</file>
+        <file>Grenade_Item.png</file>
+        <file>Helmet_Item.png</file>
+        <file>player2_left.png</file>
+        <file>player2_down.png</file>
+        <file>player2_right.png</file>
+        <file>player2_up.png</file>
+        <file>ice.png</file>
+        <file>water.png</file>
+        <file>trees.png</file>
+        <file>Flashing_Tank.png</file>
+        <file>Timer.png</file>
+        <file>Tank.png</file>
+        <file>Star.png</file>
+        <file>Shovel.png</file>
+        <file>Helmet.png</file>
+        <file>Grenade.png</file>
+        <file>black.jpg</file>
+        <file>Logo.png</file>
+        <file>basic.png</file>
+        <file>invincible.png</file>
+    </qresource>
+    <qresource prefix="/word">
+        <file>obstacle.txt</file>
+        <file>obstacle2.txt</file>
+    </qresource>
+</RCC>
